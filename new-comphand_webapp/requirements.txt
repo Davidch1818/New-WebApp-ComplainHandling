@@ -1,0 +1,20 @@
+# Technology Stack Specification:
+# OS: AlmaLinux 9
+# Backend: Python 3.14
+# App Server: Gunicorn 26.0.0, Uvicorn 0.49.0
+# Database: PostgreSQL 17.10
+# Web Server: NGINX 1.30.2
+pandas
+openpyxl
+sqlalchemy
+python-dotenv
+pytest
+httpx
+fastapi
+gunicorn
+uvicorn[standard]
+python-multipart
+psycopg2-binary
+psycopg[binary]
+passlib[bcrypt]
+python-jose[cryptography]

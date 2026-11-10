@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Flow Diagram (Horizontal)</title>
+    <!-- Include Mermaid.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'base' });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .diagram-container {
+            width: 100%;
+            max-width: 1200px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="diagram-container">
+    <div class="mermaid">
+flowchart LR
+    %% Define Styles
+    classDef default fill:#FFFFFF,stroke:#E0E0E0,stroke-width:2px,color:#333333
+    classDef trigger fill:#333333,stroke:#333333,color:#FFFFFF,font-weight:bold,rx:20px,ry:20px
+    classDef action fill:#00A94F,stroke:#008F62,color:#FFFFFF,font-weight:bold
+    classDef prod fill:#EC1C24,stroke:#D01920,color:#FFFFFF,font-weight:bold
+    classDef subgraphStyle fill:#F8F9FA,stroke:#E0E0E0,stroke-width:1px,color:#00A94F,font-weight:bold
+
+    class Pre-Merge,Post-Merge,Prod-Release subgraphStyle
+
+    %% PRE-MERGE PHASE
+    subgraph Pre-Merge ["PHASE 1: PRE-MERGE"]
+        direction TB
+        T1([Trigger: Developer Creates MR]):::trigger
+        A1[CodeArts Check: Scan Source Code & SAST]:::action
+        T1 --> A1
+    end
+
+    %% POST-MERGE PHASE
+    subgraph Post-Merge ["PHASE 2: POST-MERGE"]
+        direction TB
+        T2([Trigger: Tech Lead Approves MR]):::trigger
+        A2[Build Image & Push to Huawei SWR]:::action
+        A3[Automated Deploy to UAT CCE]:::action
+        T2 --> A2
+        A2 --> A3
+    end
+
+    %% PROD PHASE
+    subgraph Prod-Release ["PHASE 3: PRODUCTION RELEASE"]
+        direction TB
+        T3([Trigger: Tech Lead Creates Git Tag]):::trigger
+        A4[Manual Approval Window]:::default
+        A5[Deploy EXACT UAT Image from SWR to PROD CCE]:::prod
+        T3 --> A4
+        A4 --> A5
+    end
+
+    %% Flow connections
+    Pre-Merge -.-> Post-Merge
+    Post-Merge -.-> Prod-Release
+    </div>
+</div>
+
+</body>
+</html>

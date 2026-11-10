@@ -1,0 +1,32 @@
+.status-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font: var(--font-label-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.chip-resolved {
+    background-color: var(--color-primary-fixed);
+    color: var(--color-on-primary-fixed-variant);
+}
+
+.chip-pending {
+    background-color: #fff3cd;
+    /* Light amber */
+    color: #856404;
+    /* Dark brown */
+}
+
+.chip-urgent {
+    background-color: var(--color-error-container);
+    color: var(--color-on-error-container);
+}
+
+.chip-default {
+    background-color: var(--color-surface-variant);
+    color: var(--color-on-surface-variant);
+}

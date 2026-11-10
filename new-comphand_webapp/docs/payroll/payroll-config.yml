@@ -1,0 +1,43 @@
+application:
+  file-processing:
+    allowed-content-types:
+      - "application/vnd.ms-excel"
+      - "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  
+  payroll:
+    # Mode 0 (Payroll) Configuration
+    group-mode:
+      header-prefix: "0PAYGROUP"
+      transaction-narrative: "Pembayaran gaji bulanan"
+      currency-code: "IDR"
+      column-widths:
+        noref: 20
+        nama: 40
+        norekening: 19
+        nominal: 21
+    
+    # Mode 1 (M2M) Configuration
+    m2m-mode:
+      header-prefix: "0UPLM2MPAYMINUS"
+      header-description: "MANY TO MANY"
+      gl-mappings:
+        AXA: "2130070000000005000"
+        614: "2130070000000009000"
+        1002: "2130070000000004000"
+        QRIS: "5020190200000001000"
+        K4P: "4021990200101003000"
+        5009: "2130070000000005000"
+        PRIM: "5020190200000001000"
+        JALI: "4021990200201003000"
+        2001: "9991011053"
+        MDR1: "4020070109900014000"
+        MDR2: "5020190200000001000"
+        SIRQ: "5020190200000002000"
+        WITH: "5030999900000999000"
+        WAIV: "4021990100000001000"
+        LLG1: "5020190200000001000"
+        RTGS: "5020190200000001000"
+        EQUI: "2130070000000005000"
+        LOSS: "5020130000000004000"
+        2RDM: "5020190200000001000"
+        BPCR: "5011990400000001000"

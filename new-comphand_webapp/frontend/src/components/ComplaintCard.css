@@ -1,0 +1,68 @@
+.complaint-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: var(--shadow-level-1);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: box-shadow 0.2s ease;
+}
+
+.complaint-card:hover {
+    box-shadow: var(--shadow-level-2);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.header-titles {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-id {
+    font: var(--font-label-sm);
+    color: var(--color-outline);
+}
+
+.card-title {
+    font: var(--font-headline-md);
+    color: var(--color-on-surface);
+    margin-top: 4px;
+}
+
+.card-body {
+    margin: var(--spacing-sm) 0;
+}
+
+.card-summary {
+    font: var(--font-body-sm);
+    color: var(--color-on-surface-variant);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-footer {
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-outline-variant);
+}
+
+.metadata {
+    display: flex;
+    justify-content: space-between;
+    font: var(--font-label-sm);
+    color: var(--color-outline);
+}
+
+.assignee {
+    font-weight: 500;
+    color: var(--color-primary-container);
+}

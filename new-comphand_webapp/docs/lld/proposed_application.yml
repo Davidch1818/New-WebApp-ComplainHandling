@@ -1,0 +1,118 @@
+# Infrastructure Configuration
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+
+security:
+  auth:
+    manager:
+      password: ${AUTH_MANAGER_PASSWORD}
+
+# Application Business Configuration
+app:
+  reporting:
+    # Replaces LLDForm.java Enum
+    supported-forms:
+      - LLD1
+      - LLD2
+      - LLD3
+      - LLD4
+      - LLD7
+      - RKD1
+      - RKD2
+    
+    # Replaces hardcoded "00" date fallbacks
+    defaults:
+      empty-id: "x"
+      empty-year: "0000"
+      empty-month-day: "00"
+
+    # Replaces hardcoded Excel column indices in LldNewDaoImpl.java
+    excel-mappings:
+      LLD1:
+        start-row: 1
+        columns:
+          sandiPelapor: 0
+          tanggalTransaksi: 3
+          nomorTransaksi: 4
+          jenisRekening: 5
+          statusPenerimadana: 6
+          kategoriPenerimadana: 7
+          statusPembayar: 8
+          kategoriPembayar: 9
+          hubAntarpelaku: 10
+          depository: 11
+          jenisValuta: 12
+          nilaiTransaksi: 13
+          tujuanTransaksi: 14
+          namaPenerima: 15
+          jenisIdentifikasiPenerima: 16
+          nomorIdentifikasiPenerima: 17
+          namaPembayar: 18
+          jenisIdentifikasiPembayar: 19
+          nomorIdentifikasiPembayar: 20
+          bankPengirim: 21
+          bankPenerima: 22
+          detilTransaksi: 23
+          informasiDokumenPendukung: 24
+      LLD7:
+        start-row: 1
+        columns:
+          sandiBank: 0
+          jenisTransaksi: 1
+          metodeTransaksi: 2
+          noIdentifikasi: 3
+          namaApplicant: 4
+          namaBeneficiary: 5
+          npwp: 6
+          noDokumen: 7
+          tahunTransaksi: 8
+          bulanTransaksi: 9
+          tanggalTransaksi: 10
+          jenisValuta: 11
+          nilai: 12
+          tahunJatuhTempo: 13
+          bulanJatuhTempo: 14
+          tanggalJatuhTempo: 15
+          nomorRek: 16
+          jenisRek: 17
+      RKD1:
+        start-row: 1
+        columns:
+          sandiPelapor: 0
+          tanggalTransaksi: 3
+          nomorTransaksi: 4
+          jenisRekening: 5
+          negaraPenerima: 6
+          kategoriPenerima: 7
+          negaraPembayar: 8
+          kategoriPembayar: 9
+          hubAntarpelaku: 10
+          jenisValuta: 11
+          nilaiTransaksi: 12
+          tujuanTransaksi: 13
+          namaPenerima: 14
+          jenisIdentifikasiPenerima: 15
+          nomorIdentifikasiPenerima: 16
+          namaPembayar: 17
+          jenisIdentifikasiPembayar: 18
+          nomorIdentifikasiPembayar: 19
+          bankPengirim: 20
+          bankPenerima: 21
+          nomorRekeningKhusus: 22
+          nomorRekeningLawan: 23
+          bankPenerimaDHE: 24
+          nomorDokumen: 25
+          nomorRekeningPenerima: 26
+          nomorPPE: 27
+          sandiKPBC: 28
+          tanggalPPE: 29
+          valutaPPE: 30
+          nilaiPPE: 31

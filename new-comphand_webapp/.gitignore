@@ -1,0 +1,25 @@
+# Environments
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+.venv
+env/
+venv/
+ENV/
+
+# Local Database
+*.db
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Testing / Logs
+.pytest_cache/
+*.log

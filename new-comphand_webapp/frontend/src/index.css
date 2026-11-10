@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-tertiary: #c00014;
+  --color-secondary-fixed-dim: #6bdba8;
+  --color-primary: #006d31;
+  --color-on-secondary-fixed-variant: #005236;
+  --color-on-error-container: #93000a;
+  --color-outline: #6d7b6c;
+  --color-on-primary-fixed-variant: #005323;
+  --color-on-primary-fixed: #00210a;
+  --color-on-background: #1b1c1c;
+  --color-inverse-primary: #58e07e;
+  --color-surface-tint: #006d31;
+  --color-surface-container-highest: #e4e2e1;
+  --color-on-primary: #ffffff;
+  --color-on-error: #ffffff;
+  --color-on-tertiary-fixed: #410002;
+  --color-on-secondary-container: #00714d;
+  --color-secondary-container: #85f5c0;
+  --color-secondary: #006c49;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary-fixed-variant: #93000d;
+  --color-surface-container-low: #f6f3f2;
+  --color-on-secondary: #ffffff;
+  --color-surface-container: #f0eded;
+  --color-on-secondary-fixed: #002113;
+  --color-surface-bright: #fbf9f8;
+  --color-on-tertiary: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface: #1b1c1c;
+  --color-surface-dim: #dcd9d9;
+  --color-background: #fbf9f8;
+  --color-error: #ba1a1a;
+  --color-primary-container: #00a94f;
+  --color-primary-fixed-dim: #58e07e;
+  --color-tertiary-container: #ff594f;
+  --color-outline-variant: #bccaba;
+  --color-on-surface-variant: #3d4a3e;
+  --color-inverse-surface: #303030;
+  --color-inverse-on-surface: #f3f0f0;
+  --color-secondary-fixed: #88f8c3;
+  --color-primary-fixed: #76fd97;
+  --color-on-tertiary-container: #5f0005;
+  --color-on-primary-container: #003313;
+  --color-tertiary-fixed: #ffdad6;
+  --color-tertiary-fixed-dim: #ffb4ab;
+  --color-surface-variant: #e4e2e1;
+  --color-surface: #fbf9f8;
+  --color-surface-container-high: #eae8e7;
+
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+
+  --spacing-lg: 24px;
+  --spacing-unit: 4px;
+  --spacing-margin-mobile: 16px;
+  --spacing-md: 16px;
+  --spacing-sm: 8px;
+  --spacing-margin-desktop: 48px;
+  --spacing-xs: 4px;
+  --spacing-gutter: 24px;
+
+  --font-label-md: "Kurious Looped Cond", sans-serif;
+  --font-headline-lg: "Kurious Looped Cond", sans-serif;
+  --font-headline-xl: "Kurious Looped Cond", sans-serif;
+  --font-body-md: "Kurious Looped Cond", sans-serif;
+  --font-headline-md: "Kurious Looped Cond", sans-serif;
+  --font-body-lg: "Kurious Looped Cond", sans-serif;
+
+  --font-sans: "Kurious Looped Cond", sans-serif;
+}
+
+/* Keep some base resets if needed, but Tailwind handles most of it */
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+}

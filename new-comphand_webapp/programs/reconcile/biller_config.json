@@ -1,0 +1,42 @@
+{
+    "billers": {
+        "BIFAST": {
+            "name": "BI-FAST",
+            "table_prefix": "BIFAST",
+            "core_file": {
+                "format": "csv",
+                "mapping": {
+                    "business_id_col": 17,
+                    "amount_col": 18
+                }
+            },
+            "biller_file": {
+                "format": "xlsx",
+                "mapping": {
+                    "header_row": 1,
+                    "business_id_col": "Business ID",
+                    "amount_col": "Amount"
+                }
+            }
+        },
+        "PRIMA": {
+            "name": "PRIMA",
+            "table_prefix": "PRIMA",
+            "core_file": {
+                "format": "csv",
+                "mapping": {
+                    "business_id_col": 17,
+                    "amount_col": 18
+                }
+            },
+            "biller_file": {
+                "format": "xlsx",
+                "mapping": {
+                    "header_row": 1,
+                    "business_id_col": "Business ID",
+                    "amount_col": "Amount"
+                }
+            }
+        }
+    }
+}

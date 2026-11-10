@@ -1,0 +1,84 @@
+:root {
+    /* Colors */
+    --color-surface: #e8fff0;
+    --color-surface-dim: #b8e4cc;
+    --color-surface-bright: #e8fff0;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-container-low: #d1fee5;
+    --color-surface-container: #ccf8df;
+    --color-surface-container-high: #c6f2da;
+    --color-surface-container-highest: #c1ecd4;
+    --color-on-surface: #002114;
+    --color-on-surface-variant: #404943;
+    --color-inverse-surface: #0e3727;
+    --color-inverse-on-surface: #cffbe2;
+    --color-outline: #707973;
+    --color-outline-variant: #bfc9c1;
+    --color-surface-tint: #2c694e;
+
+    --color-primary: #0f5238;
+    --color-on-primary: #ffffff;
+    --color-primary-container: #2d6a4f;
+    --color-on-primary-container: #a8e7c5;
+    --color-inverse-primary: #95d4b3;
+
+    --color-secondary: #2b694d;
+    --color-on-secondary: #ffffff;
+    --color-secondary-container: #b0f1cc;
+    --color-on-secondary-container: #327053;
+
+    --color-tertiary: #364d3c;
+    --color-on-tertiary: #ffffff;
+    --color-tertiary-container: #4d6553;
+    --color-on-tertiary-container: #c6e1ca;
+
+    --color-error: #ba1a1a;
+    --color-on-error: #ffffff;
+    --color-error-container: #ffdad6;
+    --color-on-error-container: #93000a;
+
+    --color-background: #e8fff0;
+    --color-on-background: #002114;
+
+    /* Typography */
+    --font-family-base: 'Inter', sans-serif;
+
+    /* Typography - Headlines */
+    --font-headline-xl: 700 36px/44px var(--font-family-base);
+    --font-headline-xl-letter-spacing: -0.02em;
+
+    --font-headline-lg: 600 28px/36px var(--font-family-base);
+    --font-headline-lg-letter-spacing: -0.01em;
+
+    --font-headline-md: 600 20px/28px var(--font-family-base);
+
+    /* Typography - Body */
+    --font-body-lg: 400 18px/28px var(--font-family-base);
+    --font-body-md: 400 16px/24px var(--font-family-base);
+    --font-body-sm: 400 14px/20px var(--font-family-base);
+
+    /* Typography - Labels */
+    --font-label-md: 600 14px/20px var(--font-family-base);
+    --font-label-md-letter-spacing: 0.05em;
+    --font-label-sm: 500 12px/16px var(--font-family-base);
+
+    /* Elevation */
+    --shadow-level-1: 0 4px 4px rgba(0, 0, 0, 0.05);
+    --shadow-level-2: 0 12px 12px rgba(0, 0, 0, 0.10);
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-gutter: 24px;
+
+    /* Border Radius */
+    --radius-sm: 0.125rem;
+    --radius-base: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-full: 9999px;
+}

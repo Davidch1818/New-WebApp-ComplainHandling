@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBank Indonesia - Design System Guidelines</title>
+    <style>
+        :root {
+            /* Core Color Palette */
+            --kbank-green: #00A94F;
+            --id-gradient-start: #008F62;
+            --id-gradient-end: #00F88E;
+            --white: #FFFFFF;
+            --black: #333333;
+            --merchant-red: #EC1C24;
+            --secondary-red: #D01920;
+            --light-gray: #E0E0E0;
+
+            /* Typography Configuration */
+            /* Note: Ensure 'Kurious Looped Cond' web fonts are loaded in your production environment */
+            --font-primary: 'Kurious Looped Cond', system-ui, -apple-system, sans-serif;
+            
+            /* Spacing Metrics */
+            --clear-space: 2rem; /* Represents 0.5X clear space rule dynamically */
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+            margin: 0;
+            padding: var(--clear-space);
+        }
+
+        /* Typography Hierarchy (Option A & B combined for demonstration) */
+        h1, h2, h3 {
+            font-weight: 600; /* SemiBold */
+            text-transform: capitalize; /* Enforces Title Case constraint */
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            font-weight: 400; /* Regular */
+            text-transform: none; /* Sentence case default */
+        }
+
+        .alt-hierarchy h3 {
+            font-weight: 500; /* Medium */
+        }
+        
+        .alt-hierarchy p {
+            font-weight: 300; /* Light */
+        }
+
+        /* Color Palette Display Grids */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .color-card {
+            border: 1px solid var(--light-gray);
+            border-radius: 4px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .color-swatch {
+            height: 100px;
+            width: 100%;
+        }
+
+        .color-info {
+            padding: 0.5rem;
+            background: var(--white);
+        }
+
+        .color-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        .color-hex {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Utility Classes */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--id-gradient-start), var(--id-gradient-end));
+        }
+    </style>
+</head>
+<body>
+
+    <h1>KBank Indonesia UI/UX Design System</h1>
+    <p>This document serves as the foundational HTML/CSS reference for the KBank Indonesia frontend architecture.</p>
+
+    <h2>1. Core Color Palette</h2>
+    <div class="color-grid">
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: var(--kbank-green);"></div>
+            <div class="color-info">
+                <span class="color-name">KBank Green</span>
+                <span class="color-hex">#00A94F</span>
+            </div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch gradient-bg"></div>
+            <div class="color-info">
+                <span class="color-name">ID Gradient</span>
+                <span class="color-hex">#008F62 to #00F88E</span>
+            </div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: var(--merchant-red);"></div>
+            <div class="color-info">
+                <span class="color-name">Merchant Red</span>
+                <span class="color-hex">#EC1C24</span>
+            </div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: var(--secondary-red);"></div>
+            <div class="color-info">
+                <span class="color-name">Secondary Red</span>
+                <span class="color-hex">#D01920</span>
+            </div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: var(--light-gray);"></div>
+            <div class="color-info">
+                <span class="color-name">Light Gray</span>
+                <span class="color-hex">#E0E0E0</span>
+            </div>
+        </div>
+        <div class="color-card">
+            <div class="color-swatch" style="background-color: var(--black);"></div>
+            <div class="color-info">
+                <span class="color-name">Black</span>
+                <span class="color-hex">#333333</span>
+            </div>
+        </div>
+    </div>
+
+    <h2>2. Typography Rules</h2>
+    <p><strong>Primary Font:</strong> Kurious Looped Cond [cite: 919, 920, 921]</p>
+    <p><strong>Casing Constraints:</strong> Always typeset text in title case or sentence case. Do not set in all caps or all lowercase. [cite: 937, 940, 942, 943, 944, 947]</p>
+
+    <h3>Hierarchy Option A (Default)</h3>
+    <p>Uses SemiBold for Headings and Regular for Body Text. [cite: 957, 958, 959, 960, 961]</p>
+    
+    <div class="alt-hierarchy">
+        <h3>Hierarchy Option B (Alternative)</h3>
+        <p>Uses Medium for Headings and Light for Body Text. [cite: 970, 971, 972, 973]</p>
+    </div>
+
+    <h2>3. Component Styling Constraints</h2>
+    <ul>
+        <li><strong>Clear Space:</strong> Maintain 0.5X padding around core elements (represented as <code>var(--clear-space)</code> in CSS). [cite: 152, 165, 179]</li>
+        <li><strong>Visual Effects:</strong> Drop shadows and outlining are strictly prohibited. [cite: 202, 208, 236, 246]</li>
+        <li><strong>Opacity:</strong> Modifying the transparency of primary brand symbols is not allowed. [cite: 214, 254]</li>
+    </ul>
+
+</body>
+</html>

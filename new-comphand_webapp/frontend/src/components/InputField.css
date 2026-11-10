@@ -1,0 +1,47 @@
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.input-label {
+    font: var(--font-label-sm);
+    color: var(--color-on-surface);
+}
+
+.stitch-input {
+    height: 40px;
+    padding: 0 var(--spacing-sm);
+    border: 1px solid var(--color-outline-variant);
+    border-radius: var(--radius-base);
+    font: var(--font-body-md);
+    color: var(--color-on-surface);
+    background-color: var(--color-surface-container-lowest);
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.stitch-input::placeholder {
+    color: var(--color-outline);
+}
+
+.stitch-input:focus {
+    border-color: var(--color-primary-container);
+    box-shadow: 0 0 0 2px var(--color-primary-fixed);
+}
+
+.input-error {
+    border-color: var(--color-error);
+}
+
+.input-error:focus {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 2px var(--color-error-container);
+}
+
+.input-error-msg {
+    font: var(--font-label-sm);
+    color: var(--color-error);
+    margin-top: 2px;
+}

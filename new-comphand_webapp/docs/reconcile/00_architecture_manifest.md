@@ -1,0 +1,55 @@
+# Architecture Manifest & AI Root Directive
+
+> **AGENT INSTRUCTION: This is the root manifest. You MUST read and analyze this file first during every session to understand the system context before modifying any code or reading sub-modules.**
+
+## 1. Dependency Graph & Reading Order
+
+To fully comprehend any sub-program within this reconciliation system, adhere to the following reading hierarchy:
+1. **`system-architecture.md`**: Read this first for the executive summary, business purpose, and high-level workflows of the sub-program.
+2. **`Data_Architecture.md`**: Read this second to understand the database schemas, file-based data structures, and master data configurations.
+3. **`mod_file_ingestion.md`**: Read this third to understand how raw data files are parsed, validated, and persisted.
+4. **`mod_reconciliation_engine.md`**: Read this fourth to comprehend the core matching logic, deduplication guards, and fee computations.
+5. **Additional Modules (`mod_reporting_export.md`, `mod_journal.md`, `mod_outstanding.md`, `mod_master_data.md`, `mod_pln_monthly.md`)**: Read these last as they represent downstream reporting, master data configuration, or accounting outputs that rely on the upstream ingestion and matching processes.
+
+## Source Code Location
+
+All backend business logic and endpoints for this module reside in **`programs/reconcile/`**.
+Core shared utilities and the UAM integration reside in **`core_shared/`**.
+
+## 2. File Directory Mapping & Module Summaries
+
+### Rekon BIFast
+* **[system-architecture.md](./Rekon%20BIFast/system-architecture.md)**: Serves as the executive summary for the BI-FAST reconciliation module, outlining end-to-end user scenarios and high-level business workflows. Its primary purpose is to define the functional architecture connecting file ingestion, matching, and reporting. Key interfaces include the portal session integration and the core processing engine.
+* **[Data_Architecture.md](./Rekon%20BIFast/Data_Architecture.md)**: Defines the database schemas and file-based data structures for BI-FAST transactions and matching results. Its primary functional purpose is to document entity relationships and hardcoded data configurations like schema prefixes and transaction statuses. Key interfaces include the database tables and file column mapping rules.
+* **[mod_file_ingestion.md](./Rekon%20BIFast/mod_file_ingestion.md)**: Manages the upload, validation, and parsing of Core Banking CSV and BI-FAST XLSX settlement files. It is responsible for data transformation, amount normalization, and composite ID generation. Key interfaces include the UI file upload handler and backend SOAP persistence endpoints.
+* **[mod_reconciliation_engine.md](./Rekon%20BIFast/mod_reconciliation_engine.md)**: Implements the core matching algorithms comparing Core Banking records with BI-FAST settlement data. It produces Match, BIFast-Only, and Core-Only datasets while managing outstanding items. Key interfaces include the matching logic methods and the staging database tables.
+* **[mod_reporting_export.md](./Rekon%20BIFast/mod_reporting_export.md)**: Handles the presentation and Excel export of BI-FAST reconciliation results. It provides date-filtered data grids and multi-sheet spreadsheet generation. Key interfaces include UI data bindings and backend query APIs.
+
+### Rekon PAC JALIN PLN
+* **[system-architecture.md](./Rekon%20PAC%20JALIN%20PLN/system-architecture.md)**: Provides the high-level architecture for reconciling JALIN debit and PLN electricity payments via the PAC clearinghouse. It maps the end-to-end data flow from file upload to backend atomic processing. Key interfaces include the frontend client app and the unified backend RPC processing service.
+* **[Data_Architecture.md](./Rekon%20PAC%20JALIN%20PLN/Data_Architecture.md)**: Details the domain models and fixed-width/CSV data contracts for JALIN and PLN transactions. It documents implicit fallback rules (e.g., fallback reference numbers) and hardcoded master data configurations. Key interfaces include database entities and externalization strategy configurations.
+* **[mod_file_ingestion.md](./Rekon%20PAC%20JALIN%20PLN/mod_file_ingestion.md)**: Orchestrates the validation and sanitization of Core, Biller, and PLN text files prior to backend dispatch. It primarily focuses on stripping invalid control characters and pipes without performing client-side entity parsing. Key interfaces include the client file reader and the central backend dispatch API.
+* **[mod_reconciliation_engine.md](./Rekon%20PAC%20JALIN%20PLN/mod_reconciliation_engine.md)**: Encapsulates the atomic server-side parsing, database staging, and matching execution. It identifies matches and discrepancies using specific flags (e.g., Flag Tagihan) across the Core, JALIN, and PLN datasets. Key interfaces include the backend database insertion procedures and matching rules execution.
+* **[mod_reporting_export.md](./Rekon%20PAC%20JALIN%20PLN/mod_reporting_export.md)**: Renders Match, Core-Only, and Biller-Only reports along with aggregated payment summaries. It handles date-range navigation and dynamic multi-sheet Excel generation based on user toggles. Key interfaces include report query APIs and session-based navigation tokens.
+* **[mod_pln_monthly.md](./Rekon%20PAC%20JALIN%20PLN/mod_pln_monthly.md)**: A specialized view providing monthly aggregations and granular details for PLN bill payments. It supports financial analytics and fee summaries over a specified month-year period. Key interfaces include the monthly summary query APIs and the UI navigation router.
+
+### Rekon Prima QRIS
+* **[system-architecture.md](./Rekon%20Prima%20QRIS/system-architecture.md)**: Outlines the most complex subsystem handling Prima Classic, QRIS via PAC, QRIS via Prima, and Biller Prima domains. It covers the broad functional scope from transaction matching to master data and journal management. Key interfaces include the UI controller matrix and the comprehensive backend processing API.
+* **[Data_Architecture.md](./Rekon%20Prima%20QRIS/Data_Architecture.md)**: Documents the extensive master data and transaction schemas spanning Prima, QRIS, and Direct Debit. It highlights critical string-slicing logic and hidden regex cleansing rules used during parsing. Key interfaces include the relational DB schema and proposed YAML configurations.
+* **[mod_file_ingestion.md](./Rekon%20Prima%20QRIS/mod_file_ingestion.md)**: Manages the diverse upload mechanisms for over five Prima file subtypes, QRIS variants, and DD Core files. It normalizes distinct layouts into standardized domain entities while applying implicit cleansing rules. Key interfaces include the varied file upload service methods and DB persistence RPCs.
+* **[mod_reconciliation_engine.md](./Rekon%20Prima%20QRIS/mod_reconciliation_engine.md)**: Executes parallel matching logic across the four distinct reconciliation domains. It handles complex fee computations, deduplication guards, and multi-directional matching queries. Key interfaces include the matching execution procedures and master fee lookup functions.
+* **[mod_master_data.md](./Rekon%20Prima%20QRIS/mod_master_data.md)**: Provides centralized CRUD operations for configuration entities like Merchant Codes, Fee Schedules, and Transaction Codes. This module is the sole modifier of reference data consumed by the reconciliation engine. Key interfaces include the master data UI forms and CRUD backend services.
+* **[mod_journal.md](./Rekon%20Prima%20QRIS/mod_journal.md)**: An accounting output module responsible for generating Prima journal entries for General Ledger integration. It consumes matched reconciliation results and computes nominal amounts based on fee schedules. Key interfaces include journal batch insertion services and GL export views.
+* **[mod_outstanding.md](./Rekon%20Prima%20QRIS/mod_outstanding.md)**: Tracks the lifecycle of unresolved transactions, managing period transitions (New to Old) and manual status overrides. It ensures items are properly staged, resolved, or carried forward across batches. Key interfaces include the status edit controllers and outstanding archive queries.
+* **[mod_reporting_export.md](./Rekon%20Prima%20QRIS/mod_reporting_export.md)**: Delivers a comprehensive suite of views for all Prima QRIS domains, including matched, declined, and monthly aggregated results. It queries backend results to generate customized Excel workbooks for financial reporting. Key interfaces include the aggregated query methods and spreadsheet builder utilities.
+
+### Rekon Telkom
+* **[system-architecture.md](./Rekon%20Telkom/system-architecture.md)**: Documents the reconciliation architecture comparing Core Telkom banking transactions against Finnet settlement files. It maps the workflow supporting up to 16 daily text and tabular files. Key interfaces include the ingestion file slots and the sequential matching backend.
+* **[Data_Architecture.md](./Rekon%20Telkom/Data_Architecture.md)**: Describes the schemas for Core Telkom and Finnet tabular data, emphasizing complex fixed-width coordinate mapping. It exposes hidden transformations such as dynamic area code parsing and phone number zero-trimming. Key interfaces include the specific substring parsing rules and hardcoded deletion dictionaries.
+* **[mod_file_ingestion.md](./Rekon%20Telkom/mod_file_ingestion.md)**: Parses up to 10 distinct Telkom fixed-width files and 6 Finnet spreadsheets per run. It is responsible for handling variable formatting and extracting normalized records for staging. Key interfaces include the line-by-line text parser and batch insert database commands.
+* **[mod_reconciliation_engine.md](./Rekon%20Telkom/mod_reconciliation_engine.md)**: Compares Telkom and Finnet records to produce matched pairs and discrepancy sets. It contains critical silent deletion logic for dummy phone numbers before finalizing matches. Key interfaces include the join queries and post-match filtering execution blocks.
+* **[mod_reporting_export.md](./Rekon%20Telkom/mod_reporting_export.md)**: A straightforward reporting module providing views for Match, Core-Only, and Finnet-Only datasets without multi-sheet logic. It allows date-range filtering and unconditional spreadsheet export for basic daily/weekly review. Key interfaces include data grid renders and simplified export streams.
+
+### AI Artifacts
+* **[implementation_plan.md](./artifacts/implementation_plan.md)**: Outlines the Clean Room Audit strategy to overhaul the legacy system documentation. Its primary purpose is to track the subagent task assignments for extracting hidden logic and replacing legacy framework details. Key interfaces include the audit checklist and AI system verification tasks.
+* **[walkthrough.md](./artifacts/walkthrough.md)**: Summarizes the findings and execution results of the Clean Room documentation audit across all four subsystems. It provides a log of the undocumented rules, legacy syntax removals, and formatting standardizations achieved. Key interfaces include the audit result summaries for each domain.
