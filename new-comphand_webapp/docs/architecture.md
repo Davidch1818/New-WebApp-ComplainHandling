@@ -27,15 +27,7 @@ Regardless of which third-party is being reconciled, the system follows a standa
 5. **Exception Handling:** Unmatched transactions are flagged and presented to the UI for manual "Sinkron" review.
 6. **Reporting:** The module generates the final Excel output containing MATCH, CORE ONLY, and THIRD-PARTY ONLY sheets, uploads it to storage, and provides a download link.
 
-## 3. Third-Party Modules
-Because each third-party has completely different matching logic and file formats, their specific rules are documented in isolated module files:
-
-*   [BiFast Rules](modules/bifast.md)
-*   [PAC Jalin PLN Rules](modules/pac-jalin-pln.md)
-*   [Prima QRIS Rules](modules/prima-qris.md)
-*   [Telkom Rules](modules/telkom.md)
-
-## 4. Deployment
+## 3. Deployment
 For detailed deployment procedures and manual workflow strategies, please refer to:
 *   [Developer Workflow](developer-workflow.md)
 *   [Manual Deployment Guide](manual-deployment-guide.md)
