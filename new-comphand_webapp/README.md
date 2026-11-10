@@ -12,4 +12,3 @@ An internal corporate portal utilizing a scalable, microservices-based architect
 
 * 🏛️ **[System Architecture](docs/architecture.md)**: Core design, microservices setup, and CI/CD lifecycle.
 * 🗄️ **[Database Schema Registry](docs/db-schema-registry.md)**: PostgreSQL staging and exception tables for all modules.
-* 🧩 **[Third-Party Modules](docs/modules/)**: Specific matching logic and ingestion rules for third-party systems.
