@@ -1,4 +1,4 @@
-# BMAS Internal Web
+# New Internal Web
 
 An internal corporate portal utilizing a scalable, microservices-based architecture deployed on an On-Premise Linux environment. It encompasses User Access Management (UAM), Customer Handling, and 4 Reconciliation Engines.
 
